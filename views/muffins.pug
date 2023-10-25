@@ -22,9 +22,14 @@ block content
     ]
   div(class= "container-fluid")
     div(class = "row")
-      each item in results
-        div(class= "col-sm-2") Flavor: #{item.muffin_flavour}
-        div(class= "col-sm-2") Quantity: #{item.muffin_quantity}
-        div(class= "col-sm-2") Cost: #{item.muffin_cost}
+      each item,index in results
+        div(class= "col-sm-2", onclick=`buy(${index})`) Flavor: #{item.muffin_flavour}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.muffin_quantity}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.muffin_cost}
         br
         br
+        
+  script.
+    function buy(itemNum){
+      alert(`You purchased item ${itemNum+1}`)
+    }
